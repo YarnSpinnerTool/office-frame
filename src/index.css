@@ -1,0 +1,29 @@
+@import url("./reset.css");
+
+:root {
+  --black: rgb(  0,   0,   0);
+  --white: rgb(255, 255, 255);
+  --green: rgb(  0, 255,   0);
+  --blue: rgb(  0,   0, 255);
+  --red: rgb(255,   0,   0);
+  --yellow: rgb(255, 255,   0);
+  --orange: rgb(255, 128,   0);
+  --clean: rgb(220, 180, 200);
+}
+
+html {
+  font-smooth: never;
+  -webkit-font-smoothing : none;
+}
+
+body {
+  display:flex;
+  justify-content: center;
+}
+
+.content  {
+  width: 800px;
+  height: 480px;
+
+  background: var(--white);
+}
