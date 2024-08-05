@@ -1,5 +1,16 @@
 @import url("./reset.css");
 
+@font-face {
+  font-family: 'Silkscreen';
+  src: url(./fonts/Silkscreen-Regular.ttf);
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Silkscreen';
+  src: url(./fonts/Silkscreen-Bold.ttf);
+  font-weight: bold;
+}
+
 :root {
   --black: rgb(  0,   0,   0);
   --white: rgb(255, 255, 255);
@@ -14,6 +25,7 @@
 html {
   font-smooth: never;
   -webkit-font-smoothing : none;
+  font-family: 'Silkscreen';
 }
 
 body {
@@ -26,4 +38,5 @@ body {
   height: 480px;
 
   background: var(--white);
+  overflow: hidden;
 }
