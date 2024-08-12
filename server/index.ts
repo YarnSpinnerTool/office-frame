@@ -67,6 +67,13 @@ app.get("/image" satisfies Endpoint, async (_req, _res) => {
         await page.goto('http://localhost:' + PORT, {
             waitUntil: 'networkidle2',
         });
+
+        // Wait for page to finish loading - all '.network-loading' elements
+        // must no longer be visible
+        await page.waitForSelector(".network-loading", {
+            "hidden": true
+        })
+
         await page.screenshot({
             type: 'png',
             path: 'image.png',

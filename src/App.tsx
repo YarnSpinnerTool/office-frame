@@ -77,7 +77,7 @@ function CalendarView(props: { after: Date; count: number }) {
     });
 
     if (query.isFetching) {
-        return <>Loading calendar...</>;
+        return <div className="network-loading">Loading calendar...</div>;
     }
 
     if (query.isError || query.data === undefined) {
