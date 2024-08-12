@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "serve": "tsx watch server"
+    "serve": "tsx watch server",
+    "setup": "git pull && npm install && npm run build"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.15",
