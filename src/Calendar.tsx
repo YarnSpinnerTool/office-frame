@@ -37,9 +37,9 @@ const formatRelativeLocaleWithTime: Record<FormatRelativeToken, string> = {
     lastWeek: "'Last' eeee 'at' h:mm a",
     yesterday: "'Yesterday' 'at' h:mm a",
     today: "'Today' 'at' h:mm a",
-    tomorrow: "'Tomorrow'  'at' h:mm a",
-    nextWeek: "'Next' eeee  'at' h:mm a",
-    other: "d MMMM  'at' h:mm a",
+    tomorrow: "'Tomorrow' 'at' h:mm a",
+    nextWeek: "'Next' eeee 'at' h:mm a",
+    other: "d MMMM 'at' h:mm a",
 };
 
 const localeWithoutTime: Locale = {
@@ -153,7 +153,7 @@ export function CalendarView(props: { after: Date; count: number }) {
     return (
         <div>
             {events.map((e, i) => (
-                <div key={i}>
+                <div key={i} style={{ paddingBottom: "8px" }}>
                     <div style={{ fontWeight: "bold" }}>{e.title}</div>
                     <div style={{ paddingLeft: "16px" }}>{e.describe()}</div>
                 </div>
