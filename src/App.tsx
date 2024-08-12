@@ -30,24 +30,38 @@ import {
 // https://github.com/date-fns/date-fns/blob/master/src/locale/en-US/_lib/formatRelative/index.js
 // https://github.com/date-fns/date-fns/issues/1218
 // https://stackoverflow.com/questions/47244216/how-to-customize-date-fnss-formatrelative
-const formatRelativeLocale: Record<FormatRelativeToken, string> = {
+const formatRelativeLocaleWithoutTime: Record<FormatRelativeToken, string> = {
     lastWeek: "'Last' eeee",
     yesterday: "'Yesterday'",
     today: "'Today'",
     tomorrow: "'Tomorrow'",
     nextWeek: "'Next' eeee",
-    other: "dd.MM.yyyy",
+    other: "d MMMM",
 };
 
-const locale: Locale = {
+const formatRelativeLocaleWithTime: Record<FormatRelativeToken, string> = {
+    lastWeek: "'Last' eeee 'at' h:mm a",
+    yesterday: "'Yesterday' 'at' h:mm a",
+    today: "'Today' 'at' h:mm a",
+    tomorrow: "'Tomorrow'  'at' h:mm a",
+    nextWeek: "'Next' eeee  'at' h:mm a",
+    other: "d MMMM  'at' h:mm a",
+};
+
+const localeWithoutTime: Locale = {
     ...enAU,
-    formatRelative: (token) => formatRelativeLocale[token],
+    formatRelative: (token) => formatRelativeLocaleWithoutTime[token],
+};
+
+const localeWithTime: Locale = {
+    ...enAU,
+    formatRelative: (token) => formatRelativeLocaleWithTime[token],
 };
 
 const formatRelativeWithoutTime = (date: Date) =>
-    formatRelativeBase(date, new Date(), { locale });
+    formatRelativeBase(date, new Date(), { locale: localeWithoutTime });
 const formatRelativeWithTime = (date: Date) =>
-    formatRelativeBase(date, new Date(), { locale: enAU });
+    formatRelativeBase(date, new Date(), { locale: localeWithTime });
 
 const fetchCalendarEntries = async (): Promise<CalendarResponse> => {
     console.log("I'm loadin' here");
