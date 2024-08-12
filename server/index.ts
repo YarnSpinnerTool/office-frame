@@ -1,5 +1,3 @@
-//@ts-check
-
 import express from "express"
 import puppeteer from "puppeteer"
 import path from "node:path"
@@ -26,6 +24,7 @@ app.get("/image", async (_req, _res) => {
         await browser.close();
         _res.sendFile(path.join(process.cwd(), "image.png"))
     } catch (err) {
+        _res.status(500).send("Internal error");
         throw err;
     }
 });
