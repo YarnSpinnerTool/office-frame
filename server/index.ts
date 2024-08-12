@@ -9,18 +9,22 @@ const app = express();
 app.get("/image", async (_req, _res) => {
     try {
 
-        const browser = await puppeteer.launch({defaultViewport: {width: 800, height: 480},});
+        const browser = await puppeteer.launch({
+            defaultViewport: {
+                width: 800, height: 480
+            },
+        });
         const page = await browser.newPage();
-        
+
         await page.goto('http://localhost:' + PORT, {
             waitUntil: 'networkidle2',
         });
         await page.screenshot({
             type: 'png',
             path: 'image.png',
-            
+
         });
-        
+
         await browser.close();
         _res.sendFile(path.join(process.cwd(), "image.png"))
     } catch (err) {
