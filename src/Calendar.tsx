@@ -157,17 +157,27 @@ export function CalendarView(props: {
         })
         .slice(0, props.count);
 
-    return (
-        <div style={props.style}>
-            {events.map((e, i) => (
-                <div
-                    key={i}
-                    style={{ paddingBottom: "8px", ...props.childStyle }}
-                >
-                    <div style={{ fontWeight: "bold" }}>{e.title}</div>
-                    <div style={{ paddingLeft: "16px" }}>{e.describe()}</div>
-                </div>
-            ))}
-        </div>
-    );
+    if (events.length <= 0) {
+        return (
+            <div style={props.style}>
+                <div style={{ fontWeight: "bold" }}>No calendar events!</div>
+            </div>
+        );
+    } else {
+        return (
+            <div style={props.style}>
+                {events.map((e, i) => (
+                    <div
+                        key={i}
+                        style={{ paddingBottom: "8px", ...props.childStyle }}
+                    >
+                        <div style={{ fontWeight: "bold" }}>{e.title}</div>
+                        <div style={{ paddingLeft: "16px" }}>
+                            {e.describe()}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        );
+    }
 }
