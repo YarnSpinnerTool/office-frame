@@ -134,9 +134,7 @@ export function CalendarView(props: {
                 isAfter(e.start, props.after) ||
                 (e.end && isAfter(e.end, props.after))
             );
-        });
-
-    events
+        })
         .sort((a, b) => {
             const getDate = (event: typeof a & typeof b): Date => {
                 if (
@@ -157,7 +155,7 @@ export function CalendarView(props: {
 
             return isBefore(aDate, bDate) ? -1 : 1;
         })
-        .slice(props.count);
+        .slice(0, props.count);
 
     return (
         <div style={props.style}>
