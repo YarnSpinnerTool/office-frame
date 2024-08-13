@@ -133,20 +133,24 @@ export function CalendarView(props: { after: Date; count: number }) {
 
     events
         .sort((a, b) => {
-            if (
-                isBefore(a.start, Date.now()) &&
-                isBefore(b.start, Date.now()) &&
-                a.end &&
-                b.end &&
-                isAfter(a.end, Date.now()) &&
-                isAfter(b.end, Date.now())
-            ) {
-                // If both events started in the past and both have an end date in the future, sort by end date
-                return isBefore(a.end, b.end) ? -1 : 1;
-            } else {
-                // Otherwise, sort by start date
-                return isBefore(a.start, b.start) ? -1 : 1;
-            }
+            const getDate = (event: typeof a & typeof b): Date => {
+                if (
+                    isBefore(event.start, Date.now()) &&
+                    event.end &&
+                    isAfter(event.end, Date.now())
+                ) {
+                    // This event started in the past, and has an end date in the future. Sort by end date.
+                    return event.end;
+                } else {
+                    // This event has either not yet started, or has concluded. Sort by start date.
+                    return event.start;
+                }
+            };
+
+            const aDate = getDate(a);
+            const bDate = getDate(b);
+
+            return isBefore(aDate, bDate) ? -1 : 1;
         })
         .slice(props.count);
 
