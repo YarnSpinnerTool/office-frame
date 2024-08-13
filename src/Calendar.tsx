@@ -74,7 +74,12 @@ const fetchCalendarEntries = async (): Promise<CalendarResponse> => {
     return response.data;
 };
 
-export function CalendarView(props: { after: Date; count: number }) {
+export function CalendarView(props: {
+    after: Date;
+    count: number;
+    style?: React.CSSProperties;
+    childStyle?: React.CSSProperties;
+}) {
     // Access the client
     // const queryClient = useQueryClient()
 
@@ -155,9 +160,12 @@ export function CalendarView(props: { after: Date; count: number }) {
         .slice(props.count);
 
     return (
-        <div>
+        <div style={props.style}>
             {events.map((e, i) => (
-                <div key={i} style={{ paddingBottom: "8px" }}>
+                <div
+                    key={i}
+                    style={{ paddingBottom: "8px", ...props.childStyle }}
+                >
                     <div style={{ fontWeight: "bold" }}>{e.title}</div>
                     <div style={{ paddingLeft: "16px" }}>{e.describe()}</div>
                 </div>

@@ -21,8 +21,32 @@ function App() {
                     >
                         Welcome to <strong>Yarn Spinner</strong>
                     </div>
-                    <div style={{ flexGrow: 1, overflow: "hidden" }}>
-                        <CalendarView after={new Date()} count={9} />
+                    <div
+                        style={{
+                            flexGrow: 1,
+                            overflow: "hidden",
+                            width: "100%",
+                        }}
+                    >
+                        <CalendarView
+                            after={new Date()}
+                            count={15}
+                            style={{
+                                paddingTop: "8px",
+                                paddingBottom: "8px",
+
+                                display: "flex",
+                                height: "100%",
+                                width: "100%",
+                                // Overflow to new columns
+                                flexDirection: "column",
+                                flexFlow: "column wrap",
+                            }}
+                            // Ensure each child is the full width - this will
+                            // force overflowing children to the next
+                            // (off-screen, not-visible) column
+                            childStyle={{ width: "100%" }}
+                        />
                     </div>
                     <div
                         style={{
