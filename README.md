@@ -2,6 +2,8 @@
 
 Yarn Spinner's office display shows a list of upcoming calendar events on a [Pimeroni Inky Frame 7.3](https://shop.pimoroni.com/products/inky-frame-7-3) e-ink display.
 
+![A screenshot of the calendar app, showing a list of upcoming events.](.github/screenshot.png)
+
 This repo contains the source code to the following:
 
 - A web app that retrieves calendar information from a Notion calendar and displays it.
