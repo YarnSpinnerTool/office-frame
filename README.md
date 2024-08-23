@@ -7,6 +7,9 @@ This repo contains the source code to the following:
 - A web app that retrieves calendar information from a Notion calendar and displays it.
 - A web server that serves the web app, and also allows downloading a server-generated screenshot of the web app as a PNG.
 - Device firmware for a Pimeroni Inky Frame that periodically downloads and displays the screenshot from the server.
+
+> [!IMPORTANT]
+> While we hope this repo is interesting or useful, we aren't able to offer any support for it, and we aren't responsible for anything that might go wrong if you do choose to use it.
   
 ## Setting Up
 
