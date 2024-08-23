@@ -1,4 +1,4 @@
-# Secret Lab Office Frame
+# Yarn Spinner's Office Frame
 # Written in 2024 by Jon Manning
 
 # Notes:
@@ -33,6 +33,8 @@ import os
 
 # Sleep for 2 seconds to allow any initial setup or boot processes to complete.
 time.sleep(2)
+
+DISPLAY_TYPE = DISPLAY_INKY_FRAME_7
 
 # Define Wi-Fi credentials
 WIFI_SSID = "Your SSID"
@@ -108,7 +110,7 @@ def fetch_and_display():
     gc.collect()
 
     print("Loading image...")
-    display = PicoGraphics(display=DISPLAY_INKY_FRAME_7)
+    display = PicoGraphics(display=DISPLAY_TYPE)
 
     png = PNG(display)
 
