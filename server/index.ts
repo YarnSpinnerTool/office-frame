@@ -71,7 +71,8 @@ app.get("/image" satisfies Endpoint, async (_req, _res) => {
         // Wait for page to finish loading - all '.network-loading' elements
         // must no longer be visible
         await page.waitForSelector(".network-loading", {
-            "hidden": true
+            "hidden": true,
+            timeout: 120_000,
         })
 
         await page.screenshot({
