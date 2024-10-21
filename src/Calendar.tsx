@@ -7,6 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 
 import { FormatRelativeToken, isAfter, isBefore, Locale } from "date-fns";
 
+import YarnSpinnerLogoURL from "./assets/yarnspinner.svg?url";
+
 const apiHost = "http://localhost:8080";
 const endPoint = (path: Endpoint): URL => {
     const url = new URL(apiHost);
@@ -159,8 +161,16 @@ export function CalendarView(props: {
 
     if (events.length <= 0) {
         return (
-            <div style={props.style}>
+            <div
+                style={{
+                    flexDirection: "column",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyItems: "center",
+                }}
+            >
                 <div style={{ fontWeight: "bold" }}>No calendar events!</div>
+                <img src={YarnSpinnerLogoURL} />
             </div>
         );
     } else {
